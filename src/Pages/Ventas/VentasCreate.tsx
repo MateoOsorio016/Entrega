@@ -136,7 +136,7 @@ export const VentasCreate = () => {
 			  top: '1rem',
 			  right: '1rem'
 			}}>
-			  <Button text='Agregar Producto' onClick={() => null} />
+			  
 			</div>
 		  </div>
 		</>
@@ -181,7 +181,7 @@ export const VentasCreate = () => {
 		// }
 	
 		return (
-			<>
+			<><Button text='Agregar Producto' onClick={() => null} />
 				<Table
 					columns={['id', 'Producto', 'Categoria' , 'Cantidad' ,'Subtotal', 'IVA ', 'Total']}
 					data={[
@@ -211,6 +211,7 @@ export const VentasCreate = () => {
 					actionsTableOptions={false}
 					tituloDocumento=''
 					nombreArchivo=''
+					showLogoutButton={false}
 				/>
 			</>
 		);

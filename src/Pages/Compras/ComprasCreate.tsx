@@ -30,12 +30,6 @@ export const ComprasCreate = () => {
 		} else if (iva === '') {
 			setControlErrors({ ...controlErrors, iva: 'El iva es requerido' });
 			return;
-		} else if (total === '') {
-			setControlErrors({
-				...controlErrors,
-				total: 'El proveedor es requerido',
-			});
-			return;
 		}
 
         Swal.fire({
