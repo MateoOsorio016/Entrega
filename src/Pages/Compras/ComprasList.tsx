@@ -1,5 +1,6 @@
 import { useFetch } from "../../Hooks/useFetch";
 import { Table } from "../../components/Table/Table";
+import {TableD} from "../../components/Table/Tabledetalle";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { ModalContainer, Modal } from "../../components/Modal/Modal";
@@ -109,7 +110,7 @@ export const ComprasList = () => {
   );
 };
 const DetalleCompra = ({ showModal }: any) => {
-  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotalIva", "Iva", "Total", "Estado"];
   const columns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
    const products = [
     {
@@ -126,8 +127,8 @@ const DetalleCompra = ({ showModal }: any) => {
 return (
   <ModalContainer ShowModal={showModal}>
     <Modal showModal={showModal} title='Detalle'>
-          <Table data={products} columns={columns} dbColumns={dbcolumns} title='' createLink='' createText='' label='' 
-      deleteFunction={()=>false} tituloDocumento={'Pedidos'} nombreArchivo={'Pedidos'}/>
+          <TableD data={products} columns={columns} dbColumns={dbcolumns} 
+      tituloDocumento={'Pedidos'} nombreArchivo={'Pedidos'}/>
     </Modal>
   </ModalContainer>
 );

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useState } from 'react';
 import { ModalContainer, Modal } from '../../components/Modal/Modal';
 import { createPortal } from 'react-dom';
+import { TableD } from "../../components/Table/Tabledetalle";
 
 
 export const VentasList = () => {
@@ -104,8 +105,8 @@ const DetalleCompra = ({ showModal }: any) => {
 	return (
 		<ModalContainer ShowModal={showModal}>
 			<Modal showModal={showModal} title='Venta'>
-            <Table data={shop} columns={columns} dbColumns={dbcolumns} title='' createLink='' createText='' label='' 
-        deleteFunction={()=>false} tituloDocumento={'Ventas'} nombreArchivo={'Ventas'}/>
+      <TableD data={shop} columns={columns} dbColumns={dbcolumns}  
+      tituloDocumento={'Ventas'} nombreArchivo={'Ventas'}/>
 			</Modal>
 		</ModalContainer>
 	);

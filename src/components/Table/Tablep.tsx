@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { IoAddCircleSharp } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 import { ExcelButton } from '../ExcelButton/ExcelButton';
-import './Table.css';
+import './Tablex.css';
 
 interface TableProps {
   data: any[];
@@ -155,9 +155,9 @@ export const Table: React.FC<TableProps> = ({
                         </button>
                         {showDropdown && (
                           <ul className="estadoDropdown">
-                            <li onClick={() => setEstado('En proceso')}>
+                            <li onClick={() => setEstado('Pendiente')}>
 Pendiente                            </li>
-                            <li onClick={() => setEstado('Enviado')}>
+                            <li onClick={() => setEstado('Confirmado')}>
 Confirmado                            </li>
                           </ul>
                         )}

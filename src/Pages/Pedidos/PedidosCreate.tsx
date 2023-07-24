@@ -216,6 +216,8 @@ export const PedidosCreate = () => {
 					actionsTableOptions={false}
 					tituloDocumento=''
 					nombreArchivo=''
+					showLogoutButton={false}
+
 				/>
 			</>
 		);

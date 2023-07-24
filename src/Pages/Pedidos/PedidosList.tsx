@@ -1,5 +1,6 @@
 import { useFetch } from "../../Hooks/useFetch";
 import { Table } from "../../components/Table/Tablep";
+import {TableD} from "../../components/Table/Tabledetalle";
 import Swal from "sweetalert2";
 import { useState } from 'react';
 import { ModalContainer, Modal } from '../../components/Modal/Modal';
@@ -95,25 +96,32 @@ export const PedidosList = () => {
     )
 }
 const DetalleCompra = ({ showModal }: any) => {
-    const dbcolumns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
-    const columns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
-     const products = [
-      {
-        id: 1,
-        Producto: "Cafe molido",
-        Cantidad:35,
-        PrecioUnitario: 12000,
-        Subtotal: 120000,
-        IVA: "19%",
-        Total: 142800
-      }
-    ]
-	return (
-		<ModalContainer ShowModal={showModal}>
-			<Modal showModal={showModal} title='Detalle'>
-            <Table data={products} columns={columns} dbColumns={dbcolumns} title='' createLink='' createText='' label='' 
-        deleteFunction={()=>false} tituloDocumento={'Pedidos'} nombreArchivo={'Pedidos'}/>
-			</Modal>
-		</ModalContainer>
-	);
+  const dbcolumns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
+  const columns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
+  const products = [
+    {
+      id: 1,
+      Producto: "Cafe molido",
+      Cantidad:35,
+      PrecioUnitario: 12000,
+      Subtotal: 120000,
+      IVA: "19%",
+      Total: 142800
+    }
+  ]
+
+  return (
+      <ModalContainer ShowModal={showModal}>
+          <Modal showModal={showModal} title='Detalle'>
+              {/* Use the TableD component here */}
+              <TableD
+                  data={products}
+                  columns={columns}
+                  dbColumns={dbcolumns}
+                  tituloDocumento={'Pedidos'}
+                  nombreArchivo={'Pedidos'}
+              />
+          </Modal>
+      </ModalContainer>
+  );
 };
