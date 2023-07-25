@@ -137,7 +137,9 @@ export const Form: FC<FormProps> = ({
                           handleChange(name, e);
                         }}
                       >
-                        <option value=""></option>
+                        <option value="" disable selected>
+                          Seleccionar {label}
+                        </option>
                         {options?.map(({ value, label }) => (
                           <option key={value} value={value}>
                             {label}

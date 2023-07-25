@@ -32,7 +32,7 @@ export const ProveedoresCreate = () => {
         type: 'text',
         label: 'Direccion',
       },
-      {
+      /*{
         name: 'Estado',
         type: 'select',
         label: 'Estado',
@@ -40,7 +40,7 @@ export const ProveedoresCreate = () => {
           { value: 'Activo', label: 'Activo' },
           { value: 'Inactivo', label: 'Inactivo' },
         ],
-      },
+      },*/
   ];
 
   function handleSubmit(e: any) {

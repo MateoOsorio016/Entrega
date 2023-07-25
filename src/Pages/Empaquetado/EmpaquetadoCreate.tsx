@@ -98,7 +98,7 @@ export const EmpaquetadoCreate = () => {
            label: 'Fecha de Compromiso',
         
 		},
-        {
+        /*{
             name: 'estado',
             type: 'select',
             label: 'Estado',
@@ -107,7 +107,7 @@ export const EmpaquetadoCreate = () => {
                 { value: 'EnProceso', label: 'En Proceso' },
                 { value: 'Finalizado', label: 'Finalizado' },
             ],
-        }
+        }*/
     ]
 
     return (

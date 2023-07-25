@@ -80,7 +80,7 @@ export const ClientesCreate = () => {
           label: "Dirección",
           type: "text",
         },
-        {
+        /*{
           name: "estado",
           label: "Estado",
           type: "select",
@@ -88,7 +88,7 @@ export const ClientesCreate = () => {
             { value: "Activo", label: "Activo" },
             { value: "Inactivo", label: "Inactivo" },
           ],
-        },      ]);
+        },  */    ]);
     } else if (selectedValue === 'empresa') {
       setFormObject([
  {
@@ -134,8 +134,8 @@ export const ClientesCreate = () => {
           name: "direccion",
           label: "Dirección",
           type: "text",
-        },
-        {
+        }
+        /*{
           name: "estado",
           label: "Estado",
           type: "select",
@@ -143,7 +143,7 @@ export const ClientesCreate = () => {
             { value: "Activo", label: "Activo" },
             { value: "Inactivo", label: "Inactivo" },
           ],
-        },      ]);
+        }, */     ]);
     }
 
     setFormValues({
@@ -154,17 +154,21 @@ export const ClientesCreate = () => {
 
   useEffect(() => {
     const selectElement = document.getElementById('tipocliente') as HTMLSelectElement;
-    selectElement.style.width = '100%';
-    selectElement.style.padding = '10px';
-    selectElement.style.fontSize = '16px';
+    selectElement.style.width = '50%'; // Ajusta el ancho deseado en pixels o cualquier otra unidad de medida.
+    selectElement.style.maxWidth = '100%'; // Para asegurar que no se desborde de su contenedor si es más ancho.
+    selectElement.style.height = '7%';
+    selectElement.style.padding = '1rem';
+    selectElement.style.fontSize = '1.7rem';
     selectElement.style.border = '1px solid #ccc';
     selectElement.style.borderRadius = '5px';
     selectElement.style.outline = 'none';
+    selectElement.style.margin = '0 auto';
+    selectElement.style.marginBottom = '2rem';
   }, []);
 
   return (
     <div>
-      <label htmlFor="tipocliente">Tipo de Cliente:</label>
+      <label htmlFor="tipocliente" style={{ fontSize: "2rem", marginBottom: "10px",display: "block", color:"#9f212f"}}>Tipo de Cliente</label>
       <select id="tipocliente" value={selectedOption} onChange={handleSelectChange}>
         <option value="">Seleccionar</option>
         <option value="persona">Persona</option>

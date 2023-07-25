@@ -176,7 +176,7 @@ export const ContratosCreate = () => {
 			type: 'date',
 			label: 'Fecha fin del contrato ',
 		},
-		{
+		/*{
 			name: 'estado',
 			type: 'select',
 			label: 'Estado',
@@ -184,7 +184,7 @@ export const ContratosCreate = () => {
 				{ value: 'Activo', label: 'Activo' },
 				{ value: 'Cancelado', label: 'Cancelado' },
 			],
-		},
+		},*/
 	];
 
 	return (
