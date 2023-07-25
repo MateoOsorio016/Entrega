@@ -15,7 +15,7 @@ interface TableProps {
   createLink?: string;
   createText?: string;
   editLink?: string;
-	editButton?: boolean;
+editButton?: boolean;
   deleteFunction: (id: string) => void;
   buttonsActions?: any[];
   actionsTableOptions?: boolean;
@@ -23,7 +23,7 @@ interface TableProps {
   nombreArchivo: string;
 }
 
-export const Table: React.FC<TableProps> = ({
+export const TableV: React.FC<TableProps> = ({
   data,
   columns,
   dbColumns,
@@ -127,14 +127,6 @@ export const Table: React.FC<TableProps> = ({
                        {editButton && (
 												<Button
 													key={index}
-													text={'editar'}
-													onClick={() => navigate(`${editLink}/${row._id}`)}
-													fill={true}
-												/>
-											)}
-                       {editButton && (
-												<Button
-													key={index}
 													text={'Anular'}
 													onClick={() => null}
 													fill={true}
@@ -157,10 +149,12 @@ export const Table: React.FC<TableProps> = ({
                         </button>
                         {showDropdown && (
                           <ul className="estadoDropdown">
-                            <li onClick={() => setEstado('Pendiente')}>
-                                          Pendiente                         </li>
-<li onClick={() => setEstado('Confirmado')}>
-Confirmado                         </li>
+                                            <li onClick={() => setEstado('En proceso')}>
+                                            En proceso</li>
+                                            <li onClick={() => setEstado('Enviado')}>
+                                            Enviado</li>
+                                            <li onClick={() => setEstado('Recibido')}>
+                                            Recibido</li>
                           </ul>
                         )}
                       </div>

@@ -26,7 +26,7 @@ interface TableProps {
 	deleteButton?:boolean;
 }
 
-export const Table: React.FC<TableProps> = ({
+export const TablePr: React.FC<TableProps> = ({
 	data,
 	columns,
 	dbColumns,
@@ -155,7 +155,7 @@ export const Table: React.FC<TableProps> = ({
 											{deleteButton && (
 											<Button
 												key={index + row._id}
-												text={'Estado'}
+												text={'Eliminar'}
 												onClick={() => deleteFunction(row._id)}
 												fill={false}
 											/>

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Table } from '../../components/Table/Table';
+import { TablePr } from '../../components/Table/TablePr';
 
 export const PedidosCreate = () => {
 	const navigate = useNavigate();
@@ -96,6 +97,11 @@ export const PedidosCreate = () => {
 			label: 'Cliente',
 		},
 		{
+			name: 'Telefono',
+			type: 'number',
+			label: 'Telefono',
+		},
+		{
 			name: 'Producto',
 			type: 'select',
 			label: 'Producto',
@@ -108,11 +114,6 @@ export const PedidosCreate = () => {
 			name: 'Cantidad',
 			type: 'number',
 			label: 'Cantidad',
-		},
-		{
-			name: 'Telefono',
-			type: 'number',
-			label: 'Telefono',
 		},
 		{
 			name: 'Categoria',
@@ -187,7 +188,7 @@ export const PedidosCreate = () => {
 	
 		return (
 			<><Button text='Agregar Producto' onClick={()=> null}/>
-				<Table
+				<TablePr
 					columns={['id', 'Producto', 'Categoria' , 'Cantidad' ,'Subtotal', 'IVA ', 'Total']}
 					data={[
 						{

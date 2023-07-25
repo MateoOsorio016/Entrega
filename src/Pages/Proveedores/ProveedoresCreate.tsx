@@ -18,9 +18,9 @@ export const ProveedoresCreate = () => {
         label: 'Nombre',
       },
       {
-        name: 'Telefono',
+        name: 'Numero representante',
         type: 'number',
-        label: 'Telefono',
+        label: 'Numero de representante',
       },
       {
         name: 'Email',

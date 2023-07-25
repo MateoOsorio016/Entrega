@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Table } from '../../components/Table/Table';
+import { TablePr } from '../../components/Table/TablePr';
 
 export const ComprasCreate = () => {
 	const navigate = useNavigate();
@@ -149,7 +150,7 @@ export const ComprasCreate = () => {
 		return (
 			<>
 			<Button text='Agregar Insumo' onClick={()=> null}/>
-				<Table
+				<TablePr
 					columns={['Categoría', 'Insumo', 'Cantidad', 'Costo', 'Sub-Total', 'Iva', 'SubTotal IVA', 'Total']}
 					data={[
 						{

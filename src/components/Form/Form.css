@@ -4,165 +4,163 @@
 	border: 1px solid #ccc;
 	padding: 5rem;
 	margin: 0px;
-  }
-  
-  .card h1 {
-	font-size: 1.5rem;
+}
+
+.card h1 {
+	font-size: 1.8rem; /* Aumentar el tamaño de la fuente del título */
 	font-weight: bold;
 	text-transform: capitalize;
 	color: #9f212f;
-	margin-bottom: 5rem;
-  }
-  
-  .card form {
+	margin-bottom: 2rem; /* Reducir el margen inferior del título */
+}
+
+.card form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 5rem;
-  }
-  
-  .card .formRow {
+	margin: 10rem; /* Reducir el margen del formulario */
+}
+
+.card .formRow {
 	display: flex;
 	gap: 1rem;
-  }
-  
-  .card .inputControl {
+}
+
+.card .inputControl {
 	width:100%;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 	position: relative;
-	margin-bottom: 2rem;
-	margin-right: 2rem;
-  }
-  
-  .card .inputControl input {
+	margin-bottom: 1.5rem; /* Reducir el margen inferior del control de entrada */
+	margin-right: 1.5rem; /* Reducir el margen derecho del control de entrada */
+}
+
+.card .inputControl input {
 	width: 100%;
-	height: 100%; /* Ajusta el valor de la altura según desees */
-	padding: 8% 1.2rem;
+	height: 3.5rem; /* Reducir la altura del input para hacerlo más estético */
+	padding: 1rem;
 	border-radius: 5px;
 	border: 1px solid #d6cab0;
 	outline: none;
-	font-size: 1rem;
+	font-size: 1.1rem; /* Aumentar el tamaño de la fuente del input */
 	font-weight: lighter;
-	margin-bottom: 2rem;
-	margin-right: 2rem;
-  }
-  
-  .card .inputControl input::placeholder {
-	color: transparent;
-  }
-  
-  .card .inputControl label {
+	margin-bottom: 1rem; /* Reducir el margen inferior del input */
+}
+
+.card .inputControl input::placeholder {
+	color: #999; /* Ajustar el color del texto de marcador de posición */
+}
+
+.card .inputControl label {
 	position: absolute;
-	top: -15px;	
+	top: -20px; /* Aumentar la distancia vertical de la etiqueta */
 	left: 1.2rem;
-	font-size: 0.8rem;
-	font-weight: lighter;
+	font-size: 0.9rem; /* Aumentar el tamaño de la fuente de la etiqueta */
+	font-weight: normal; /* Cambiar a "normal" en lugar de "lighter" */
 	color: #555045;
 	pointer-events: none;
 	transition: all 0.3s ease-in-out;
 	background: #f2f2f2;
 	padding: 0 0.25rem;
-  }
-  
-  .card .inputControl input:focus {
+}
+
+.card .inputControl input:focus {
 	border: 2px solid #9f212f;
-  }
-  
-  .card .inputControl input:focus ~ label {
-	top: -15px;
-	font-size: 0.8rem;
+}
+
+.card .inputControl input:focus ~ label {
+	top: -20px; /* Ajustar la posición de la etiqueta al enfocar el input */
+	font-size: 0.9rem; /* Ajustar el tamaño de la fuente de la etiqueta al enfocar */
 	color: #9f212f;
-  }
-  
-  .card .inputControl input:not(:focus):not(:placeholder-shown) ~ label {
-	top: -15px;
-	font-size: 0.8rem;
+}
+
+.card .inputControl input:not(:focus):not(:placeholder-shown) ~ label {
+	top: -20px; /* Ajustar la posición de la etiqueta cuando el input no está enfocado o no tiene texto */
+	font-size: 0.9rem; /* Ajustar el tamaño de la fuente de la etiqueta cuando el input no está enfocado o no tiene texto */
 	color: #d6cab0;
-  }
-  
-  .card .selectControl {
+}
+
+.card .selectControl {
 	width: 100%;
-	height: 4rem;
+	height: 5rem; /* Reducir la altura del select para hacerlo más estético */
 	display: flex;
-	padding: 0.5rem;
+	padding: 1rem;
 	flex-direction: column;
 	gap: 0.5rem;
 	position: relative;
-	margin-bottom: 2rem;
-	margin-right: 2rem;
-  }
-  
-  .card .selectControl select {
+	margin-bottom: 5rem; /* Reducir el margen inferior del control de selección */
+	margin-right: 1.5rem; /* Reducir el margen derecho del control de selección */
+}
+
+.card .selectControl select {
 	width: 100%;
 	padding: 0.8rem 1.2rem;
 	border-radius: 5px;
 	border: 1px solid #d6cab0;
 	outline: none;
-	font-size: 1rem;
+	font-size: 1.1rem; /* Aumentar el tamaño de la fuente del select */
 	font-weight: lighter;
 	appearance: none;
 	background: url(https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-512.png) no-repeat right #fff;
 	background-position: 95%;
 	background-size: 15px;
-	margin-right: 2rem;
-  }
-  
-  .card .selectControl label {
+	margin-right: 1.5rem; /* Reducir el margen derecho del select */
+}
+
+.card .selectControl label {
 	position: absolute;
-	top: -15px;
+	top: -20px; /* Aumentar la distancia vertical de la etiqueta */
 	left: 1.2rem;
-	font-size: 0.8rem;
-	font-weight: lighter;
+	font-size: 0.9rem; /* Aumentar el tamaño de la fuente de la etiqueta */
+	font-weight: normal; /* Cambiar a "normal" en lugar de "lighter" */
 	color: #555045;
 	pointer-events: none;
 	transition: all 0.3s ease-in-out;
 	background: #f2f2f2;
 	padding: 0 0.25rem;
-  }
-  
-  .card .selectControl select:focus {
+}
+
+.card .selectControl select:focus {
 	border: 2px solid #9f212f;
-  }
-  
-  .card .selectControl select:focus ~ label {
-	top: -15px;
-	font-size: 0.8rem;
+}
+
+.card .selectControl select:focus ~ label {
+	top: -20px; /* Ajustar la posición de la etiqueta al enfocar el select */
+	font-size: 0.9rem; /* Ajustar el tamaño de la fuente de la etiqueta al enfocar */
 	color: #9f212f;
-  }
-  
-  .card .selectControl.active select:not(:focus) ~ label {
-	top: -15px;
-	font-size: 0.8rem;
+}
+
+.card .selectControl.active select:not(:focus) ~ label {
+	top: -20px; /* Ajustar la posición de la etiqueta cuando el select tiene valor seleccionado */
+	font-size: 0.9rem; /* Ajustar el tamaño de la fuente de la etiqueta cuando el select tiene valor seleccionado */
 	color: #d6cab0;
-  }
-  
-  /* Table Styles */
-  .table-container {
+}
+
+/* Table Styles */
+.table-container {
 	width: 100%;
 	overflow-x: auto;
 	margin-top: 1rem;
-  }
-  
-  .table-container table {
+}
+
+.table-container table {
 	width: 100%;
 	border-collapse: collapse;
 	margin-bottom: 1rem;
-  }
-  
-  .table-container table th,
-  .table-container table td {
+}
+
+.table-container table th,
+.table-container table td {
 	border: 1px solid #ccc;
 	padding: 0.5rem;
-  }
-  
-  /* Button Styles */
-  .card button {
+}
+
+/* Button Styles */
+.card button {
 	margin-top: 1rem;
-  }
-  
-  .card .cancelButton {
+}
+
+.card .cancelButton {
 	margin-top: 0.5rem;
-  }
-  
+}

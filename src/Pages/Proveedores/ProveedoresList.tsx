@@ -2,20 +2,20 @@ import {Table} from "../../components/Table/Table"
 import Swal from 'sweetalert2';
 
 export const ProveedoresList=()=>{
-    const columns=['ID', 'Nit', 'Nombre', 'Telefono', 'Email', 'Direccion', 'Estado'];
+    const columns=['ID', 'Nit', 'Nombre', 'Numero Representante', 'Email', 'Direccion', 'Estado'];
     const dbcolumns = ['ID', 'Nit', 'Nombre', 'Telefono', 'Email', 'Direccion', 'Estado'];
     function handleDelete() {
         Swal.fire({
-            title: 'Esta seguro de eliminar este proveedor?',
+            title: 'Esta seguro de cambiar el estado de  este proveedor?',
             showDenyButton: true,
-            confirmButtonText: 'Eliminar',
+            confirmButtonText: 'Cambiar estado',
             denyButtonText: `Cancelar`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire('Proveedor eliminado con éxito!', '', 'success')
+              Swal.fire('Estado cambiado con exito con éxito!', '', 'success')
             } if (result.isDenied) {
-              Swal.fire('El proveedor no ha sido eliminado', '', 'info')
+              Swal.fire('El estado no ha sido cambiado', '', 'info')
             }
           })
       }

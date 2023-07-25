@@ -109,23 +109,22 @@
 }
 
 .btnsesion {
-	display: block;
-	padding: 0.5rem 1rem;
-	width: 70%;
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 70%;
     margin-left: 500%;
-	border-radius: 10px;
-	color: #fff;
-	font-size: 1rem;
-	font-weight: bold;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	background: #9f212f;
-	text-transform: uppercase;
-	transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #9f212f;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
- 
 }
 
 .btnsesion:hover {
@@ -148,13 +147,16 @@
     animation: animate .5s linear infinite;
 }
 .createButton {
-    font-size: 3rem;
+    font-size: 1.7rem;
     padding: 1rem;
-    margin-left: 42rem;
-    margin-right: 40rem;
+    margin-right: 1rem; /* Puedes ajustar este margen según el espacio que desees entre los botones */
     background-color: rgba(209, 209, 209, 0.74);
     border-radius: 0.5rem;
+    float: left; /* Alineamos el botón a la izquierda usando float */
 }
+
+
+
 
 @keyframes animate {
     0% {

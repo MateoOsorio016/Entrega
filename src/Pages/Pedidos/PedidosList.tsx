@@ -96,32 +96,28 @@ export const PedidosList = () => {
     )
 }
 const DetalleCompra = ({ showModal }: any) => {
-  const dbcolumns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
-  const columns = ['id', 'Producto', 'Cantidad', 'PrecioUnitario', 'Subtotal', 'IVA', 'Total'];
-  const products = [
-    {
-      id: 1,
-      Producto: "Cafe molido",
-      Cantidad:35,
-      PrecioUnitario: 12000,
-      Subtotal: 120000,
-      IVA: "19%",
-      Total: 142800
-    }
-  ]
-
-  return (
-      <ModalContainer ShowModal={showModal}>
-          <Modal showModal={showModal} title='Detalle'>
-              {/* Use the TableD component here */}
-              <TableD
-                  data={products}
-                  columns={columns}
-                  dbColumns={dbcolumns}
-                  tituloDocumento={'Pedidos'}
-                  nombreArchivo={'Pedidos'}
-              />
-          </Modal>
-      </ModalContainer>
-  );
+	return (
+		<ModalContainer ShowModal={showModal}>
+			<Modal showModal={showModal} title='Detalle'>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4rem', fontSize: '1.2rem' }}>
+  <div style={{marginRight: '8rem' }}>
+    <p><strong>ID:</strong> 1213213FG</p>
+    <p><strong>FACTURA:</strong> Número de factura</p>
+    <p><strong>CLIENTE:</strong> Nombre del cliente</p>
+    <p><strong>FECHA:</strong> [Fecha de la factura]</p>
+    <p><strong>TELEFONO:</strong> [TELEFONO]</p>
+    <p><strong>ESTADO:</strong> Completada</p>
+  </div>
+  <div>
+    <p><strong>PRODUCTO:</strong> Nombre del producto</p>
+    <p><strong>CANTIDAD:</strong> CANTIDAD</p>
+    <p><strong>VALOR UNITARIO:</strong> $50.00</p>
+    <p><strong>SUBTOTAL:</strong> $200.00</p>
+    <p><strong>IVA:</strong> $10.00</p>
+    <p><strong>TOTAL:</strong> $60.00</p>
+  </div>
+</div>
+			</Modal>
+		</ModalContainer>
+	);
 };
