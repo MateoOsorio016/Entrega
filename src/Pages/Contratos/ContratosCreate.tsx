@@ -1,11 +1,12 @@
 import { Form, FormField } from '../../components/Form/Form';
 import { Button } from '../../components/Button/Button';
+import { Form2, FormField2 } from '../../components/Form/Form2';
 import { useFetch } from '../../Hooks/useFetch';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Table } from '../../components/Table/Table';
-import { FaSleigh } from 'react-icons/fa';
+import { TablePr } from '../../components/Table/TablePr';
 
 export const ContratosCreate = () => {
 	const navigate = useNavigate();
@@ -23,12 +24,13 @@ export const ContratosCreate = () => {
 		const direccion = e.target.direccion.value;
 		const nombreRepresentante = e.target.nombreRepresentante.value;
 		const correoRepresentante = e.target.correoRepresentante.value;
-		const producto = e.target.producto.value;
-		const comision = e.target.comision.value;
 		const duracion = e.target.duracion.value;
 		const cobro = e.target.cobro.value;
+		const comision = e.target.comision.value;
+		//const fechaInicio = e.target.fechaInicio.value;
 		//const fechaFin = e.target.fechaFin.value;
 		//const fecha = e.target.fecha.value;
+		const producto = e.target.producto.value;
 		const estado = e.target.estado.value;
 		if (nombreEmpresa === '') {
 			setControlErrors({
@@ -76,12 +78,13 @@ export const ContratosCreate = () => {
 			direccion,
 			nombreRepresentante,
 			correoRepresentante,
-			producto,
-			comision,
 			duracion,
 			cobro,
+			comision,
+			fechaInicio:'2023-05-27',
 			fechaFin:'2023-07-27',
 			//fecha,
+			producto,
 			estado,
 		};
 		Swal.fire({
@@ -105,6 +108,7 @@ export const ContratosCreate = () => {
 		});
 		
 	}
+	
 
 	const contratosFields: FormField[] = [
 		{
@@ -132,30 +136,13 @@ export const ContratosCreate = () => {
 			type: 'text',
 			label: 'Correo de representante',
 		},
-		{
-			name: 'producto',
-			type: 'select',
-			label: 'Producto',
-			options: [
-				{ value: 'cafetostadooscuro250gr', label: 'Café tostado oscuro 250gr' },
-				{ value: 'cafetostadomolido500gr', label: 'Café tostado molido 500gr' },
-			],
-		},
-		{
-			name: 'comision',
-			type: 'select',
-			label: 'Comisión',
-			options: [
-				{ value: '0%', label: '0%' },
-				{ value: '10%', label: '10%' },
-				{ value: '35%', label: '35%' },
-			],
-		},
+		
+		
 		{
 			name: 'duracion',
 			type: 'select',
 			label: 'Duración',
-			options: [{ value: '1mes', label: '1 mes' }],
+			options: [{ value: '1mes', label: '1 mes' },{ value: '3mes', label: '3 meses' },{ value: '6mes', label: '6 mes' },{ value: '1ano', label: '1 año' }],
 		},
 		{
 			name: 'cobro',
@@ -166,11 +153,21 @@ export const ContratosCreate = () => {
 				{ value: 'mensual', label: 'Mensual' },
 			],
 		},
+		{
+			name: 'comision',
+			type: 'text',
+			label: 'Comisión (%)'
+		},
 		//{
 		//	name: 'fecha',
 		//	type: 'date',
 		//	label: 'Fecha de Contrato',
 		//},
+		{
+			name: 'fechaInicio',
+			type: 'date',
+			label: 'Fecha inicio del contrato ',
+		},
 		{
 			name: 'fechaFin',
 			type: 'date',
@@ -185,6 +182,15 @@ export const ContratosCreate = () => {
 				{ value: 'Cancelado', label: 'Cancelado' },
 			],
 		},*/
+		{
+			name: 'producto',
+			type: 'select',
+			label: 'Producto',
+			options: [
+				{ value: 'cafetostadooscuro250gr', label: 'Café tostado oscuro 250gr' },
+				{ value: 'cafetostadomolido500gr', label: 'Café tostado molido 500gr' },
+			],
+		},
 	];
 
 	return (
@@ -225,30 +231,83 @@ const TableCreateContrato = () => {
 	// }
 
 	return (
-		<><Button text='Agregar Producto' onClick={()=> null}/>
-			<Table
-				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario']}
+		<>
+			<Button text='Agregar Producto' onClick={() => null} />
+			<TablePr
+				columns={[
+					'Categoría',
+					'Producto',
+					'Cantidad',
+					'Costo',
+					'Sub-Total',
+					'Iva',
+					'SubTotal IVA',
+					'Total',
+				]}
 				data={[
 					{
-						id: 1,
-						producto: 'Café Oscuro Amargo 300 Gr',
-						cantidad: '- 15 +',
-						valorU: '15.000'
+						Categoría: 'Café en grano',
+						Insumo: 'Café en grano 250gr',
+						Cantidad: '- 15 +',
+						Costo: '15.000',
+						SubTotal: '150.000',
+						Iva: '8%',
+						SubTotalIVA: '185.000',
+						Total: '200.000',
 					},
 					{
-						id: 2,
-						producto: 'Café Oscuro Dulce 300 Gr',
-						cantidad: '- 20 +',
-						valorU: '25.000'
-					}
+						Categoría: 'Café en polvo',
+						Insumo: 'Café en polvo 1kg',
+						Cantidad: '- 15 +',
+						Costo: '15.000',
+						SubTotal: '150.000',
+						Iva: '8%',
+						SubTotalIVA: '185.000',
+						Total: '200.000',
+					},
 				]}
-				dbColumns={['id', 'producto', 'cantidad', 'valorU']}
-				deleteFunction={()=>null}
+				dbColumns={[
+					'Categoría',
+					'Insumo',
+					'Cantidad',
+					'Costo',
+					'SubTotal',
+					'Iva',
+					'SubTotalIVA',
+					'Total',
+				]}
+				deleteFunction={() => null}
 				editButton={false}
 				actionsTableOptions={false}
 				tituloDocumento=''
 				nombreArchivo=''
 				showLogoutButton={false}
+			/>
+				<Form2
+			title='Total'
+				fields={[
+					{
+						name: 'Monto',
+						type: 'text',
+						label: 'SubTotal',
+					},
+					{
+						name: 'SubTotalIva',
+						type: 'text',
+						label: 'SubTotal Iva',
+						readonly: true,
+					},
+					{
+						name: 'Total',
+						type: 'text',
+						label: 'Total',
+					},
+				]}
+				onSubmit={()=>null}
+				errors={{}}
+				cancelButton={false}
+				buttonstay={false}
+				// extraElements={<TableCreateCompra />}
 			/>
 		</>
 	);

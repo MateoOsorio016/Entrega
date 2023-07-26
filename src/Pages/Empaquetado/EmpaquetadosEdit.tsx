@@ -86,6 +86,7 @@ export const EmpaquetadosEdit = () => {
             type: 'text',
             value: empaquetado?._id,
             label: 'ID Empaquetado',
+			readonly: true,
         },
         {
             name: "insumo",
@@ -123,12 +124,13 @@ export const EmpaquetadosEdit = () => {
             name: 'fechaCompromiso',
             type: 'date',
             label: 'Fecha de Compromiso',
+			value: new Date(),
         },
-		{
-            name: 'fechaEstado',
-            type: 'date',
-            label: 'Fecha de Estado',
-        },
+		// {
+        //     name: 'fechaEstado',
+        //     type: 'date',
+        //     label: 'Fecha de Estado',
+        // },
         {
             name: 'estado',
             type: 'select',
@@ -183,31 +185,29 @@ const TableCreateEmpaquetado = () => {
 	return (
 		<><Button text='Agregar Producto' onClick={()=> null}/>
 			<Table
-				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario','Estado Actual']}
+				columns={['ID', 'Producto', 'Valor Unitario','Estado Actual']}
 				data={[
 					{
 						id: 1,
 						producto: 'Café Oscuro 500gr ',
-						cantidad: '- 15 +',
 						valorU: '15.000',
 						estado:'En Proceso'
 					},
 					{
 						id: 2,
 						producto: 'Café Oscuro 250gr ',
-						cantidad: '- 20 +',
 						valorU: '25.000',
 						estado: 'Finalizado'
 					}
 				]}
-				dbColumns={['id', 'producto', 'cantidad', 'valorU','estado']}
+				dbColumns={['id', 'producto', 'valorU','estado']}
 				deleteFunction={()=>null}
 				editButton={false}
 				actionsTableOptions={false}
 				tituloDocumento=''
 				nombreArchivo=''
 				showLogoutButton={false}
-				deleteButton={false}
+				deleteButton={true}
 			/>
 		</>
 	);

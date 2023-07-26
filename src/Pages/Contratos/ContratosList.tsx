@@ -34,9 +34,9 @@ export const ContratosList = () => {
 		window.location.href = "/#/admin/pagos";
 	  }
 
-    const columns = ['id','nombre Empresa','NIT','Dirección','Nombre Representante','Correo Representante','Producto','Comisión','Duración','Cobro','Fecha del Contrato','Fecha Fin','Estado',];
+    const columns = ['id','nombre Empresa','NIT','Dirección','Nombre Representante','Correo Representante','Producto','Comisión','Duración','Cobro','Fecha del Contrato','Fecha Inicio','Fecha Fin','Estado',];
     
-    const dbcolumns =['id','nombreEmpresa','NIT','direccion','nombreRepresentante','correoRepresentante','producto','comision','duracion','cobro','fecha','fechaFin','estado'];
+    const dbcolumns =['id','nombreEmpresa','NIT','direccion','nombreRepresentante','correoRepresentante','producto','comision','duracion','cobro','fecha','fechaInicio','fechaFin','estado'];
     const contratos= data.contracts || data;
     const buttonsActions = [
         {

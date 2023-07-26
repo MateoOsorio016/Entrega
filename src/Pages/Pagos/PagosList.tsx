@@ -37,9 +37,9 @@ export const PagosList = () => {
 	const pagos = data.pays || data;
     const buttonsActions = [
         {
-            text: 'Ver detalle',
+            text: 'Pendiente',
             onClick: () => handleShowModal(),
-            fill: true,
+            fill: false,
         },
     ];
     const [showModal, setShowModal] = useState(false);
@@ -61,7 +61,8 @@ export const PagosList = () => {
             tituloDocumento={'Pagos'}
             nombreArchivo={'Pagos'} 
             deleteButton={false}
-            buttonsActions={buttonsActions}/>
+            buttonsActions={buttonsActions}
+            editButton={false}/>
            
             {showModal &&
 				createPortal(

@@ -156,34 +156,24 @@ export const ContratosEdit = () => {
 			],
 		},
 		{
-			name: 'comision',
-			type: 'select',
-			value: contract?.comision,
-			label: 'Comisión',
-			options: [
-				{ value: '0%', label: '0%' },
-				{ value: '10%', label: '10%' },
-				{ value: '35%', label: '35%' },
-			],
-		},
-		{
 			name: 'duracion',
 			type: 'select',
-			value: contract?.duracion,
 			label: 'Duración',
-			options: [
-				{ value: '1mes', label: '1 mes' },
-			],
+			options: [{ value: '1mes', label: '1 mes' },{ value: '3mes', label: '3 meses' },{ value: '6mes', label: '6 mes' },{ value: '1ano', label: '1 año' }],
 		},
 		{
 			name: 'cobro',
 			type: 'select',
-			value: contract?.cobro,
 			label: 'Cobro',
 			options: [
 				{ value: 'quincenal', label: 'Quincenal' },
 				{ value: 'mensual', label: 'Mensual' },
 			],
+		},
+		{
+			name: 'comision',
+			type: 'text',
+			label: 'Comisión (%)'
 		},
 		//{
 		//	name: 'fecha',
@@ -243,22 +233,20 @@ const TableCreateContrato = () => {
 	return (
 		<><Button text='Agregar Producto' onClick={()=> null}/>
 			<Table
-				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario']}
+				columns={['ID', 'Producto', 'Valor Unitario']}
 				data={[
 					{
 						id: 1,
 						producto: 'Café Oscuro Amargo 300 Gr',
-						cantidad: '- 15 +',
 						valorU: '15.000'
 					},
 					{
 						id: 2,
 						producto: 'Café Oscuro Dulce 300 Gr',
-						cantidad: '- 20 +',
 						valorU: '25.000'
 					}
 				]}
-				dbColumns={['id', 'producto', 'cantidad', 'valorU']}
+				dbColumns={['id', 'producto', 'valorU']}
 				deleteFunction={()=>null}
 				editButton={false}
 				actionsTableOptions={false}

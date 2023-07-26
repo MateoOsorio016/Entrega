@@ -1,10 +1,12 @@
 import { Form, FormField } from "../../components/Form/Form";
 import { Button } from "../../components/Button/Button";
+import { Form2, FormField2 } from '../../components/Form/Form2'
 import { useFetch } from '../../Hooks/useFetch';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Table } from '../../components/Table/Table';
+import { TablePr } from '../../components/Table/TablePr';
 
 export const EmpaquetadoCreate = () => {
     const navigate = useNavigate();
@@ -17,7 +19,9 @@ export const EmpaquetadoCreate = () => {
 		const productoFinal= e.target.productoFinal.value;
 		const cantidad= e.target.cantidad.value;
 		// const fechaInicio= e.target.fechaInicio.value;
-		const fechaCompromiso= e.target.fechaCompromiso.value;
+		const fechaInicio= "23-09-2023";
+		const fechaCompromiso= "23-10-2023";
+		
 		const estado= e.target.estado.value;
 
             
@@ -38,7 +42,8 @@ export const EmpaquetadoCreate = () => {
 			insumo,
 			productoFinal,
 			cantidad,
-			fechaInicio: new Date(),
+			fechaEmpaquetado: new Date(),
+			fechaInicio,
 			fechaCompromiso,
 			estado
 		};
@@ -72,6 +77,21 @@ export const EmpaquetadoCreate = () => {
                 { value: 'cafemolido', label: 'Café molido' },
             ],
         },
+		{
+         
+			name: 'fechaInicio',
+			type: 'date',
+			label: 'Fecha de Inicio',
+		 
+		 },
+		{
+         
+			name: 'fechaCompromiso',
+			type: 'date',
+			label: 'Fecha de Compromiso',
+		 
+		 },
+		 
         {
             name: "productoFinal",
             type: "select",
@@ -91,13 +111,7 @@ export const EmpaquetadoCreate = () => {
         //     type: 'date',
         //     label: 'Fecha Inicio',
         // },
-		{
-         
-		   name: 'fechaCompromiso',
-           type: 'date',
-           label: 'Fecha de Compromiso',
-        
-		},
+		
         /*{
             name: 'estado',
             type: 'select',
@@ -147,33 +161,83 @@ const TableCreateEmpaquetado = () => {
 	// }
 
 	return (
-		<><Button text='Agregar Producto' onClick={()=> null}/>
-			<Table
-				columns={['ID', 'Producto', 'Cantidad', 'Valor Unitario','Estado del producto']}
+		<>
+			<Button text='Agregar Producto' onClick={() => null} />
+			<TablePr
+				columns={[
+					'Categoría',
+					'Producto',
+					'Cantidad',
+					'Costo',
+					'Sub-Total',
+					'Iva',
+					'SubTotal IVA',
+					'Total',
+				]}
 				data={[
 					{
-						id: 1,
-						producto: 'Café Oscuro 500gr ',
-						cantidad: '- 15 +',
-						valorU: '15.000',
-						estado: 'Inicial'
+						Categoría: 'Café en grano',
+						Insumo: 'Café en grano 250gr',
+						Cantidad: '- 15 +',
+						Costo: '15.000',
+						SubTotal: '150.000',
+						Iva: '8%',
+						SubTotalIVA: '185.000',
+						Total: '200.000',
 					},
 					{
-						id: 2,
-						producto: 'Café Oscuro 250gr ',
-						cantidad: '- 20 +',
-						valorU: '25.000',
-						estado:'Inicial'
-					}
+						Categoría: 'Café en polvo',
+						Insumo: 'Café en polvo 1kg',
+						Cantidad: '- 15 +',
+						Costo: '15.000',
+						SubTotal: '150.000',
+						Iva: '8%',
+						SubTotalIVA: '185.000',
+						Total: '200.000',
+					},
 				]}
-				dbColumns={['id', 'producto', 'cantidad', 'valorU','estado']}
-				deleteFunction={()=>null}
+				dbColumns={[
+					'Categoría',
+					'Insumo',
+					'Cantidad',
+					'Costo',
+					'SubTotal',
+					'Iva',
+					'SubTotalIVA',
+					'Total',
+				]}
+				deleteFunction={() => null}
 				editButton={false}
 				actionsTableOptions={false}
 				tituloDocumento=''
 				nombreArchivo=''
 				showLogoutButton={false}
-	
+			/>
+				<Form2
+			title='Total'
+				fields={[
+					{
+						name: 'Monto',
+						type: 'text',
+						label: 'SubTotal',
+					},
+					{
+						name: 'Descuento',
+						type: 'text',
+						label: 'Descuento',
+						readonly: true,
+					},
+					{
+						name: 'Total',
+						type: 'text',
+						label: 'Total',
+					},
+				]}
+				onSubmit={()=>null}
+				errors={{}}
+				cancelButton={false}
+				buttonstay={false}
+				// extraElements={<TableCreateCompra />}
 			/>
 		</>
 	);

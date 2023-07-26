@@ -29,16 +29,19 @@ export const EmpaquetadoList = () => {
 	}
   });
 }
+
 	const columns = [
 		'id',
 		'Insumo',
-		'Prodcuto Final',
-		'Cantidad',
+		'Fecha Empaquetado',
 		'Fecha Inicio',
 		'Fecha de Compromiso',
+		'Prodcuto Final',
+		'Cantidad',
 		'Estado',
 	];
-	const dbcolumns =['id','insumo','productoFinal','cantidad','fechaInicio','fechaCompromiso','estado']
+	
+	const dbcolumns =['id','insumo','fechaEmpaquetado','fechaInicio','fechaCompromiso','productoFinal','cantidad','estado']
 	const empaquetados = data.empaquetados || data; 
 	const buttonsActions = [
         {
@@ -47,6 +50,7 @@ export const EmpaquetadoList = () => {
             fill: true,
         },
     ];
+	
 	const [showModal, setShowModal] = useState(false);
 	function handleShowModal () {
     setShowModal(true);
