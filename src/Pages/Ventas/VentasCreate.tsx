@@ -78,7 +78,22 @@ export const VentasCreate = () => {
         // console.log(data);
 
 	}
-
+	function handleSecondFormSubmit(e: any) {
+		// ... Lógica para manejar la presentación del segundo formulario - si es necesario ...
+	}
+	const segundoFormFields: FormField[] = [
+		{
+			name: 'Campo1',
+			type: 'text',
+			label: 'Campo 1',
+		},
+		{
+			name: 'Campo2',
+			type: 'text',
+			label: 'Campo 2',
+		},
+		// Agrega aquí los campos adicionales que desees en el segundo formulario
+	];
 	const ventasFields: FormField[] = [
 		{
 			name: 'Factura',
@@ -130,63 +145,31 @@ export const VentasCreate = () => {
 			button={<Button text={'Registrar Venta'} onClick={() => null} />}
 			errors={controlErrors}
 			extraElements={<TableCreateCompra />}
+			
 		  />
-	
-		  <div style={{
-			position: 'relative',
-			width: '100%',
-			marginTop: '2rem',
-		  }}>
-			<div style={{
-			  position: 'absolute',
-			  top: '1rem',
-			  right: '1rem'
-			}}>
-			  
-			</div>
-		  </div>
+
 		</>
 	  );
+ }
 	
-	return (
-		<>
-			<Form
-				fields={ventasFields}
-				title='Crear Venta'
-				onSubmit={handleRegisterShop}
-				button={<Button text={'Registrar Venta'} onClick={() => null} />}
-				errors={controlErrors}
-				extraElements={<TableCreateCompra />}
-			/>
-		</>
-	);
-	
-    }
+
 	const TableCreateCompra = () => {
-		// const [data, setData] = useState<any[]>([]);
-		// const tableCreate: FormField[] = [
-		//     {
-		//         name: 'permisos',
-		//         type: 'select',
-		//         label: 'Permisos',
-		//         options: [
-		//             { value: '1', label: 'Permiso 1' },
-		//             { value: '2', label: 'Permiso 2' },
-		//             { value: '3', label: 'Permiso 3' },
-		//             { value: '4', label: 'Permiso 4' },
-		//         ]
-		//     }
-		// ]
-	
-		// function handleDelete(id: string) {
-	
-		//     const newData = data.filter((item: any) => item.id !== id);
-	
-		//     setData(newData);
-	
-		// }
+		const segundoFormFields: FormField[] = [
+			{
+				name: 'Campo1',
+				type: 'text',
+				label: 'Campo 1',
+			},
+			{
+				name: 'Campo2',
+				type: 'text',
+				label: 'Campo 2',
+			},
+			// Agrega aquí los campos adicionales que desees en el segundo formulario
+		];
 	
 		return (
+			
 			<><Button text='Agregar Producto' onClick={() => null} />
 				<TablePr
 					columns={['id', 'Producto', 'Categoria' , 'Cantidad' ,'Subtotal', 'IVA ', 'Total']}
@@ -211,6 +194,8 @@ export const VentasCreate = () => {
                             Total: 5890,
 						}
 					]}
+					
+					
 					dbColumns={['id', 'Producto', 'Categoria' , 'Cantidad' ,'Subtotal', 'IVA ', 'Total']}
 					deleteFunction={()=>null}
 					editButton={false}
@@ -219,6 +204,24 @@ export const VentasCreate = () => {
 					nombreArchivo=''
 					showLogoutButton={false}
 				/>
+				<Form
+			fields={segundoFormFields}
+			title='Crear Venta'
+			onSubmit={()=>null}
+			button={<Button text={'Registrar Venta'} onClick={() => null} />}
+			extraElements={<TableCreateCompra />}
+			/>
 			</>
+			
+
 		);
+
+		
 	};
+	
+
+
+
+
+	
+	
