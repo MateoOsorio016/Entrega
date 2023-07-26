@@ -37,7 +37,7 @@ export const InsumosCreate = () => {
 			});
 			return;
 		} else if (descripcion === '') {
-			setControlErrors({ ...controlErrors, descripcion: 'El proveedor es requerido' });
+			setControlErrors({ ...controlErrors, descripcion: 'El Iva es requerido' });
 			return;
 		}
 	
@@ -96,12 +96,11 @@ export const InsumosCreate = () => {
 		},
 		{
 			name: 'descripcion',
-			type: 'select',
-			label: 'Proveedor',
-			options: [
-				{ value: 'Café finca Pueblo Rico', label: 'Café finca Pueblo Rico' },
-				{ value: 'Café finca Santa Rosa', label: 'Café finca Santa Rosa' },
-			],
+			type: 'text',
+			label: 'Iva',
+			value: '8%',
+			readonly: true,
+			
 		},
 	];
 	return (

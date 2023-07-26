@@ -1,6 +1,6 @@
 import { useFetch } from "../../Hooks/useFetch";
 import { Table } from "../../components/Table/Table";
-import {TableD} from "../../components/Table/Tabledetalle";
+import { TableD } from "../../components/Table/Tabledetalle";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { ModalContainer, Modal } from "../../components/Modal/Modal";
@@ -37,7 +37,7 @@ export const ComprasList = () => {
   }
   interface Compra {
     id: number;
-    Insumo: string;
+    Proveedor: string;
     Cantidad: string;
     Costo: number;
     SubTotal: string;
@@ -45,33 +45,50 @@ export const ComprasList = () => {
     Total: String;
     Estado: string;
   }
-  
 
-  
-
-  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
-  const columns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
+  const dbcolumns = [
+    "id",
+    "Proveedor",
+    "Cantidad",
+    "Costo",
+    "SubTotal",
+    "Iva",
+    "Total",
+    "Estado",
+  ];
+  const columns = [
+    "id",
+    "Proveedor",
+    "Cantidad",
+    "Costo",
+    "SubTotal",
+    "Iva",
+    "Total",
+    "Estado",
+  ];
   const compras: Compra[] = data.compras || data;
   console.log(data);
 
   const datoQuemado = 148000; // Valor que deseas agregar a la columna 'Total'
-      
+
   const nuevaCompra: Compra = {
     id: 1,
-    Insumo: 'Café en grano finca pueblo rico',
-    Cantidad: '100 KG',
+    Proveedor: "Finca pueblo rico",
+    Cantidad: "100 KG",
     Costo: datoQuemado,
-    SubTotal: '248000',
-    Iva: 8,
-    Total: '3000000',
-    Estado: 'Pendiente'
+    SubTotal: "248000",
+    Iva: 279000,
+    Total: "3000000",
+    Estado: "Pendiente",
   };
 
-  const existeRegistro = compras.some((pedido: Compra) => pedido.id === nuevaCompra.id);
-      
-      if (!existeRegistro) {
-        compras.push(nuevaCompra); // Agregar el nuevo pedido solo si no existe previamente
-      }
+  const existeRegistro = compras.some(
+    (pedido: Compra) => pedido.id === nuevaCompra.id
+  );
+
+  if (!existeRegistro) {
+    compras.push(nuevaCompra); // Agregar el nuevo pedido solo si no existe previamente
+  }
 
   const buttonsActions = [
     {
@@ -110,26 +127,57 @@ export const ComprasList = () => {
   );
 };
 const DetalleCompra = ({ showModal }: any) => {
-  const dbcolumns = ["id", "Insumo", "Cantidad", "Costo", "SubTotalIva", "Iva", "Total", "Estado"];
-  const columns = ["id", "Insumo", "Cantidad", "Costo", "SubTotal", "Iva", "Total", "Estado"];
-   const products = [
-    {
-      id: 1,
-      Insumo: 'Café en grano finca pueblo rico',
-      Cantidad: '100 KG',
-      Costo: 148000,
-      Total: '248000',
-      Iva: 8,
-      SubtTotalIva: '3000000',
-      Estado: 'Pendiente'
-    }
-  ]
-return (
-  <ModalContainer ShowModal={showModal}>
-    <Modal showModal={showModal} title='Detalle'>
-          <TableD data={products} columns={columns} dbColumns={dbcolumns} 
-      tituloDocumento={'Pedidos'} nombreArchivo={'Pedidos'}/>
-    </Modal>
-  </ModalContainer>
-);
+  return (
+    <ModalContainer ShowModal={showModal}>
+      <Modal showModal={showModal} title="Detalle">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "4rem",
+            fontSize: "1.2rem",
+          }}
+        >
+          <div style={{ marginRight: "8rem" }}>
+            <p>
+              <strong>ID:</strong> 1213213FG
+            </p>
+            <p>
+              <strong>FACTURA:</strong> Número de factura
+            </p>
+            <p>
+              <strong>CLIENTE:</strong> Nombre del cliente
+            </p>
+            <p>
+              <strong>FECHA:</strong> [Fecha de la factura]
+            </p>
+            <p>
+              <strong>ESTADO:</strong> Completada
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>PRODUCTO:</strong> Nombre del producto
+            </p>
+            <p>
+              <strong>CANTIDAD:</strong> CANTIDAD
+            </p>
+            <p>
+              <strong>VALOR UNITARIO:</strong> $50.00
+            </p>
+            <p>
+              <strong>SUBTOTAL:</strong> $200.00
+            </p>
+            <p>
+              <strong>IVA:</strong> $10.00
+            </p>
+            <p>
+              <strong>TOTAL:</strong> $60.00
+            </p>
+          </div>
+        </div>
+      </Modal>
+    </ModalContainer>
+  );
 };

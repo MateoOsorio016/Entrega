@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Form.css";
+import "./Form2.css";
 import { Button } from "../Button/Button";
 
 interface optionField {
@@ -8,7 +8,7 @@ interface optionField {
   label: string;
 }
 
-export interface FormField {
+export interface FormField2 {
   name: string;
   type: string;
   label: string;
@@ -17,28 +17,27 @@ export interface FormField {
   options?: optionField[];
   selected?: string;
   readonly?: boolean;
-
 }
 
 interface FormProps {
   title?: string;
-  fields: FormField[];
+  fields: FormField2[];
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  button: JSX.Element | JSX.Element[] | string;
   editable?: boolean;
   errors?: { [key: string]: string };
   cancelButton?: boolean;
+  buttonstay?: boolean;
   extraElements?: JSX.Element | JSX.Element[];
 }
 
-export const Form: FC<FormProps> = ({
+export const Form2: FC<FormProps> = ({
   title,
   fields,
   onSubmit,
-  button,
   editable,
   errors,
   cancelButton = true,
+  buttonstay = true,
   extraElements,
 }) => {
   const [selectedOption, setSelectedOption] = useState(false);
@@ -70,7 +69,7 @@ export const Form: FC<FormProps> = ({
     });
     setFormEdit(updatedFormEdit);
   }
-  const groups: FormField[][] = [];
+  const groups: FormField2[][] = [];
   for (let i = 0; i < fields.length; i += 3) {
     groups.push(fields.slice(i, i + 3));
   }
@@ -139,7 +138,7 @@ export const Form: FC<FormProps> = ({
                           handleChange(name, e);
                         }}
                       >
-                        <option value="" disabled selected>
+                        <option value="" selected>
                           Seleccionar {label}
                         </option>
                         {options?.map(({ value, label }) => (
@@ -208,7 +207,6 @@ export const Form: FC<FormProps> = ({
           </div>
           ))}
           {extraElements && extraElements}
-          {button}
           {cancelButton && (
             <Button text={"Cancelar"} onClick={() => navigate(-1)} fill={false} />
           )}
@@ -220,4 +218,4 @@ export const Form: FC<FormProps> = ({
       </table>
     </>
   );
-};
+};2

@@ -1,4 +1,5 @@
 import { Form, FormField } from '../../components/Form/Form';
+import { Form2, FormField2 } from '../../components/Form/Form2';
 import { Button } from '../../components/Button/Button';
 import { useFetch } from '../../Hooks/useFetch';
 import { useState } from 'react';
@@ -204,12 +205,30 @@ export const VentasCreate = () => {
 					nombreArchivo=''
 					showLogoutButton={false}
 				/>
-				<Form
-			fields={segundoFormFields}
-			title='Crear Venta'
-			onSubmit={()=>null}
-			button={<Button text={'Registrar Venta'} onClick={() => null} />}
-			extraElements={<TableCreateCompra />}
+				<Form2
+			title='Total'
+				fields={[
+					{
+						name: 'Monto',
+						type: 'text',
+						label: 'SubTotal',
+					},
+					{
+						name: 'SubTotalIva',
+						type: 'text',
+						label: 'SubTotal Iva',
+					},
+					{
+						name: 'Total',
+						type: 'text',
+						label: 'Total',
+					},
+				]}
+				onSubmit={()=>null}
+				errors={{}}
+				cancelButton={false}
+				buttonstay={false}
+				// extraElements={<TableCreateCompra />}
 			/>
 			</>
 			
