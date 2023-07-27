@@ -73,38 +73,6 @@ export const AdminMenu = () => {
 							className={({ isActive }) =>
 								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
 							}
-							to={'pagos'}
-						>
-							<SiCashapp /> <span className='adminMenuLink__text'>Pagos</span>
-						</NavLink>
-					</li>
-					<li className='Admin__header__nav__item'>
-						<NavLink
-							className={({ isActive }) =>
-								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
-							}
-							to={'contratos'}
-						>
-							<FaFileSignature />
-							<span className='adminMenuLink__text'>Contratos</span>
-						</NavLink>
-					</li>
-					<li className='Admin__header__nav__item'>
-						<NavLink
-							className={({ isActive }) =>
-								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
-							}
-							to={'empaquetados'}
-						>
-							<BsFillBox2Fill />
-							<span className='adminMenuLink__text'>Empaquetados</span>
-						</NavLink>
-					</li>
-					<li className='Admin__header__nav__item'>
-						<NavLink
-							className={({ isActive }) =>
-								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
-							}
 							to={'usuarios'}
 						>
 							<FaUser />
@@ -116,10 +84,10 @@ export const AdminMenu = () => {
 							className={({ isActive }) =>
 								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
 							}
-							to={'compras'}
+							to={'proveedores'}
 						>
-							<FaShoppingBasket />
-							<span className='adminMenuLink__text'>Compras</span>
+							<FaTrailer />
+							<span className='adminMenuLink__text'>Proveedores</span>
 						</NavLink>
 					</li>
 					<li className='Admin__header__nav__item'>
@@ -149,6 +117,28 @@ export const AdminMenu = () => {
 							className={({ isActive }) =>
 								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
 							}
+							to={'compras'}
+						>
+							<FaShoppingBasket />
+							<span className='adminMenuLink__text'>Compras</span>
+						</NavLink>
+					</li>
+					<li className='Admin__header__nav__item'>
+						<NavLink
+							className={({ isActive }) =>
+								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
+							}
+							to={'empaquetados'}
+						>
+							<BsFillBox2Fill />
+							<span className='adminMenuLink__text'>Empaquetados</span>
+						</NavLink>
+					</li>
+					<li className='Admin__header__nav__item'>
+						<NavLink
+							className={({ isActive }) =>
+								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
+							}
 							to={'productos'}
 						>
 							<SiCoffeescript />
@@ -171,10 +161,10 @@ export const AdminMenu = () => {
 							className={({ isActive }) =>
 								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
 							}
-							to={'proveedores'}
+							to={'contratos'}
 						>
-							<FaTrailer />
-							<span className='adminMenuLink__text'>Proveedores</span>
+							<FaFileSignature />
+							<span className='adminMenuLink__text'>Contratos</span>
 						</NavLink>
 					</li>
 					<li className='Admin__header__nav__item'>
@@ -182,13 +172,12 @@ export const AdminMenu = () => {
 							className={({ isActive }) =>
 								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
 							}
-							to={'ventas'}
+							to={'pagos'}
 						>
-							<AiFillShopping />
-							<span className='adminMenuLink__text'>Ventas</span>
+							<SiCashapp /> <span className='adminMenuLink__text'>Pagos</span>
 						</NavLink>
-						
 					</li>
+					
 					<li className='Admin__header__nav__item'>
 						<NavLink
 							className={({ isActive }) =>
@@ -201,6 +190,20 @@ export const AdminMenu = () => {
 						</NavLink>
 						
 					</li>
+					
+					<li className='Admin__header__nav__item'>
+						<NavLink
+							className={({ isActive }) =>
+								`adminMenuLink ${isActive ? 'adminMenuActive' : ''}`
+							}
+							to={'ventas'}
+						>
+							<AiFillShopping />
+							<span className='adminMenuLink__text'>Ventas</span>
+						</NavLink>
+						
+					</li>
+					
 					
 				</ul>
 			</nav>

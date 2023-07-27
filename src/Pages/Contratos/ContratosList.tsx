@@ -6,7 +6,7 @@ import { ModalContainer, Modal } from '../../components/Modal/Modal';
 import { createPortal } from 'react-dom';
 
 export const ContratosList = () => {
-    const {data,error,setBodyRequest,setMethodState,setUrlState}=useFetch({url:'https://coff-v-art-api.onrender.com/api/contract'});
+    const {data,error,setBodyRequest,setMethodState,setUrlState}=useFetch({url:'http://localhost:3000/api/contract'});
     function handleDelete(id: string){
         Swal.fire({
       title: "Esta seguro de eliminar el insumo?",
@@ -16,11 +16,11 @@ export const ContratosList = () => {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        setUrlState(`https://coff-v-art-api.onrender.com/api/contract/${id}`);
+        setUrlState(`http://localhost:3000/api/contract/${id}`);
         setMethodState('DELETE');
         setBodyRequest({_id:id})
         setTimeout(()=> {
-            setUrlState('https://coff-v-art-api.onrender.com/api/contract');
+            setUrlState('http://localhost:3000/api/contract');
             setMethodState('GET');
         },500);
         Swal.fire("Insumo eliminado con éxito!", "", "success");
@@ -34,39 +34,117 @@ export const ContratosList = () => {
 		window.location.href = "/#/admin/pagos";
 	  }
 
-    const columns = ['id','nombre Empresa','NIT','Dirección','Nombre Representante','Correo Representante','Producto','Comisión','Duración','Cobro','Fecha del Contrato','Fecha Inicio','Fecha Fin','Estado',];
-    
-    const dbcolumns =['id','nombreEmpresa','NIT','direccion','nombreRepresentante','correoRepresentante','producto','comision','duracion','cobro','fecha','fechaInicio','fechaFin','estado'];
-    const contratos= data.contracts || data;
+    interface Contrato {
+      id: number;
+      NombreE: string;
+      Nit: number;
+      Direccion: string;
+      NombreR: string;
+      CorreoR: string;
+      Producto: string;
+      Comision: string;
+      Duracion: string;
+      Cobro: string;
+      FechaC: string;
+      FechaI: string;
+      FechaF: string;
+      Estado: string;
+    }
+  
+    const dbcolumns = [
+      "id",
+      "NombreE",
+      "Nit",
+      "Direccion",
+      "NombreR",
+      "CorreoR",
+      "Producto",
+      "Comision",
+      "Duracion",
+      "Cobro",
+      "FechaC",
+      "FechaI",
+      "FechaF",
+      "Estado",
+    ];
+    const columns = [
+      "id",
+      "Nombre Empresa",
+      "Nit",
+      "Direccion",
+      "Nombre Representante",
+      "Correo Representante",
+      "Producto",
+      "Comisión",
+      "Duración",
+      "Cobro",
+      "Fecha del Contrato",
+      "Fecha Inicio",
+      "Fecha Final",
+      "Estado",
+    ];
+    const compras: Contrato[] = data.compras || data;
+    console.log(data);
+  
+   
+    const nuevaCompra: Contrato = {
+      id: 1,
+      NombreE: "Juan Valdez",
+      Nit: 1234567,
+      Direccion: "Calle 35 #80-62",
+      NombreR: "Juan Valdez Cano",
+      CorreoR: "JuanValdez370@gmail.com",
+      Producto: "Café tostado molido de 500 Gr",
+      Comision: "17%",
+      Duracion: "1 año",
+      Cobro: "Mensual",
+      FechaC: "24-07-2023",
+      FechaI: "26-07-2023",
+      FechaF: "26-07-2024",
+      Estado: "Activo"
+    };
+  
+    const existeRegistro = compras.some(
+      (pedido: Contrato) => pedido.id === nuevaCompra.id
+    );
+  
+    if (!existeRegistro) {
+      compras.push(nuevaCompra); // Agregar el nuevo pedido solo si no existe previamente
+    }
+  
     const buttonsActions = [
-        {
-            text: 'Ver detalle',
-            onClick: () => handleShowModal(),
-            fill: true,
-        },
-        {
-          text: 'Pago',
-          onClick: (redirigirP) 
-        }
+      {
+        text: "Ver detalle",
+        onClick: () => handleShowModal(),
+        fill: true,
+      },
+      {
+        text: 'Pago',
+        onClick: (redirigirP) 
+      }
     ];
     const [showModal, setShowModal] = useState(false);
-    function handleShowModal () {
-    setShowModal(true);
-}
-    return(
-        <>
-            {error && <p>Hubo un error</p>}
-            <Table data={contratos}
-            columns={columns}
-            dbColumns={dbcolumns}
-            title='Contratos'
-            createLink='create'
-            createText='Crear Contrato'
-            label='Buscar Contrato'
-            deleteFunction={handleDelete}
-            tituloDocumento={'Contratos'}
-             nombreArchivo={'Contratos'}
-            buttonsActions={buttonsActions}/>
+    function handleShowModal() {
+      setShowModal(true);
+    }
+    return (
+      <>
+        {error && <p>Hubo un error</p>}
+        <Table
+          data={compras}
+          columns={columns}
+          dbColumns={dbcolumns}
+          title="Contratos"
+          createLink="create"
+          createText="Crear Contrato"
+          label="Buscar Contrato"
+          deleteFunction={handleDelete}
+          tituloDocumento={"Contrato"}
+          nombreArchivo={"Contrato"}
+          buttonsActions={buttonsActions}
+          editButton={false}
+        />
+
             {showModal &&
 				createPortal(
 					<DetalleContrato showModal={setShowModal} />,
@@ -78,33 +156,55 @@ export const ContratosList = () => {
 const DetalleContrato = ({ showModal }: any) => {
 	return (
 		<ModalContainer ShowModal={showModal}>
-			<Modal showModal={showModal} title='Contrato'>
-				<ol style={{
-					padding: '3rem',
-					display: 'flex',
-					flexDirection: 'column',
-					gap: '1rem',
-				}}>
-					<li>Ver y navegar por los productos en el catálogo de la tienda.</li>
-					<li>Añadir productos al carrito de compra.</li>
-					<li>Realizar la compra de productos.</li>
-					<li>Ver el historial de pedidos realizados.</li>
-					<li>
-						Actualizar su información de perfil, como nombre, dirección y número
-						de contacto.
-					</li>
-					<li>Acceder a las promociones o descuentos disponibles.</li>
-					<li>
-						Suscribirse a boletines de noticias o notificaciones de la tienda.
-					</li>
-					<li>Ver y dejar reseñas o comentarios en productos.</li>
-					<li>Acceder a su lista de deseos o favoritos.</li>
-					<li>
-						Solicitar soporte o asistencia técnica en caso de problemas con los
-						pedidos o productos.
-					</li>
-				</ol>
-			</Modal>
-		</ModalContainer>
+      <Modal showModal={showModal} title="Detalle">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "4rem",
+            fontSize: "1.2rem",
+          }}
+        >
+          <div style={{ marginRight: "8rem" }}>
+            <p>
+              <strong>ID:</strong> 1213213FG
+            </p>
+            <p>
+              <strong>FACTURA:</strong> Número de factura
+            </p>
+            <p>
+              <strong>CLIENTE:</strong> Nombre del cliente
+            </p>
+            <p>
+              <strong>FECHA:</strong> [Fecha de la factura]
+            </p>
+            <p>
+              <strong>ESTADO:</strong> Completada
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>PRODUCTO:</strong> Nombre del producto
+            </p>
+            <p>
+              <strong>CANTIDAD:</strong> CANTIDAD
+            </p>
+            <p>
+              <strong>VALOR UNITARIO:</strong> $50.00
+            </p>
+            <p>
+              <strong>SUBTOTAL:</strong> $200.00
+            </p>
+            <p>
+              <strong>IVA:</strong> $10.00
+            </p>
+            <p>
+              <strong>TOTAL:</strong> $60.00
+            </p>
+          </div>
+        </div>
+      </Modal>
+    </ModalContainer>
 	);
 };
