@@ -22,10 +22,11 @@ interface FormProps {
   title?: string;
   fields: FormField[];
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  button: JSX.Element | JSX.Element[] | string;
+  button?: JSX.Element | JSX.Element[] | string;
   editable?: boolean;
   errors?: { [key: string]: string };
   cancelButton?: boolean;
+  buttonstay?: boolean;
   extraElements?: JSX.Element | JSX.Element[];
 }
 
@@ -37,6 +38,7 @@ export const Form: FC<FormProps> = ({
   editable,
   errors,
   cancelButton = true,
+  buttonstay = true,
   extraElements,
 }) => {
   const [selectedOption, setSelectedOption] = useState(false);
@@ -137,7 +139,7 @@ export const Form: FC<FormProps> = ({
                           handleChange(name, e);
                         }}
                       >
-                        <option value="" disable selected>
+                        <option value="" selected>
                           Seleccionar {label}
                         </option>
                         {options?.map(({ value, label }) => (
@@ -206,7 +208,7 @@ export const Form: FC<FormProps> = ({
           </div>
           ))}
           {extraElements && extraElements}
-          {button}
+          {buttonstay && button}
           {cancelButton && (
             <Button text={"Cancelar"} onClick={() => navigate(-1)} fill={false} />
           )}

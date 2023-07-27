@@ -1,5 +1,5 @@
 import BurdeosLogo from '../../assets/BurdeoTextLogo.png';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
 import { FaRegUser } from 'react-icons/fa';
 import { BiCart } from 'react-icons/bi';
@@ -11,7 +11,8 @@ import { useState } from 'react';
 
 export const UserMenu = () => {
 	const location = useLocation();
-	const { search, pathname } = location;
+	const { search } = location;
+	const navigate = useNavigate();
 	const [showModal, setShowModal] = useState(false);
 	return (
 		<>
@@ -76,7 +77,7 @@ export const UserMenu = () => {
 					>
 						<FaRegUser />
 					</button>
-					<button className='userMenu_opciones__item'>
+					<button className='userMenu_opciones__item' onClick={()=>navigate('/user/cart')}>
 						<BiCart />
 					</button>
 				</div>

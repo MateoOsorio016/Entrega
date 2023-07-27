@@ -63,7 +63,7 @@ export const HomeUser = () => {
         <h2>Burdeo</h2>
         <div className="cardsProductHome">
           {productosHome?.map((product) => {
-            return <ProductCard product={product} />;
+            return <ProductCard product={product} key={product.id}/>;
           })}
         </div>
       </div>

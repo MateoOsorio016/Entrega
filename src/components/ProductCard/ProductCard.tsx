@@ -68,8 +68,8 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
 				<div className='product__actions'>
 					<Button onClick={() => {
 						Swal.fire({
-							icon: 'error',
-							title: 'No se pudo agregar al carrito',
+							icon: 'success',
+							title: 'Producto agregado al carrito',
 						})
 					}} text={'Add to Cart'} fill={false} />
 				</div>
